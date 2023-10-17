@@ -1,8 +1,13 @@
 import { Profile } from './Profile/Profile';
-import user from './Profile/user.json';
+import { Statistics } from './Statistics/Statistics';
+import { FriendList } from './FriendList/FriendList';
+import { TransactionHistory } from './TransactionHistory/TransactionHistory';
+import user from './data/user.json';
+import data from './data/data.json';
+import friends from './data/friends.json';
+import transactions from './data/transactions';
 
-const userData = JSON.parse(user);
-console.log(userData);
+import css from './Profile/Profile.module.css';
 
 export const App = () => {
   return (
@@ -17,12 +22,16 @@ export const App = () => {
       }}
     >
       <Profile
-        username={userData.username}
-        tag={userData.tag}
-        location={userData.location}
-        avatar={userData.avatar}
-        stats={userData.stats}
+        username={user.username}
+        tag={user.tag}
+        location={user.location}
+        avatar={user.avatar}
+        stats={user.stats}
+        className={css.profile}
       />
+      <Statistics title="Upload stats" stats={data} />
+      <FriendList friends={friends} />
+      <TransactionHistory items={transactions} />
     </div>
   );
 };
