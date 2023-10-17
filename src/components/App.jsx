@@ -1,3 +1,9 @@
+import { Profile } from './Profile/Profile';
+import user from './Profile/user.json';
+
+const userData = JSON.parse(user);
+console.log(userData);
+
 export const App = () => {
   return (
     <div
@@ -10,7 +16,13 @@ export const App = () => {
         color: '#010101',
       }}
     >
-      Hello World!!!
+      <Profile
+        username={userData.username}
+        tag={userData.tag}
+        location={userData.location}
+        avatar={userData.avatar}
+        stats={userData.stats}
+      />
     </div>
   );
 };
